@@ -170,21 +170,24 @@
         degree: 'Licenciatura em Pedagogia',
         inst: 'Anhanguera',
         date: 'Conclusão em 26/03/2025',
-        status: 'Ativo'
+        status: 'Ativo',
+        diploma: '28555-65' // Adicionado
       },
       '12345-67': {
         name: 'João Silva',
         degree: 'Bacharel em Administração',
         inst: 'Anhanguera',
         date: 'Conclusão em 15/07/2024',
-        status: 'Ativo'
+        status: 'Ativo',
+        diploma: '12345-67' // Adicionado
       },
       '36656-64': {
         name: 'Valéria Silva de Barros Ribeiro',
         degree: 'Bacharel em Psicologia',
         inst: 'Anhanguera',
         date: 'Conclusão em 15/08/2024',
-        status: 'Ativo'
+        status: 'Ativo',
+        diploma: '36656-64' // Adicionado
       }
     };
 
@@ -231,7 +234,7 @@
       setTimeout(() => {
         btn.classList.remove('loading');
         if (knownDiplomas[v]) {
-          showKnown({...knownDiplomas[v], diploma: v});
+          showKnown(knownDiplomas[v]); // Passa o objeto diretamente
         } else {
           showNotFound(v);
         }
