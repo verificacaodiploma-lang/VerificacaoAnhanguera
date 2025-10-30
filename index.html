@@ -81,7 +81,13 @@
       transition: background 0.2s;
     }
 
-    button:hover {
+    button:disabled {
+      background: #cc5200;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    button:hover:enabled {
       background: #cc5200;
     }
 
@@ -106,6 +112,13 @@
       color: var(--muted);
       font-size: 14px;
       margin-bottom: 4px;
+    }
+
+    #feedback {
+      color: #b91c1c;
+      font-size: 14px;
+      margin-bottom: 12px;
+      min-height: 1.2em;
     }
 
     footer {
@@ -141,8 +154,9 @@
   <main>
     <div class="search">
       <input id="q" placeholder="Digite o número do diploma (ex: 18879-25)" aria-label="Número do diploma" />
-      <button id="btn">Consultar</button>
+      <button id="btn" type="button">Consultar</button>
     </div>
+    <div id="feedback" role="alert" aria-live="assertive"></div>
 
     <div class="card" id="result">
       <div class="muted">Resultado da verificação</div>
@@ -171,7 +185,7 @@
         inst: 'Anhanguera',
         date: 'Conclusão em 26/03/2025',
         status: 'Ativo',
-        diploma: '28555-65' // Adicionado
+        diploma: '28555-65'
       },
       '12345-67': {
         name: 'João Silva',
@@ -179,7 +193,7 @@
         inst: 'Anhanguera',
         date: 'Conclusão em 15/07/2024',
         status: 'Ativo',
-        diploma: '12345-67' // Adicionado
+        diploma: '12345-67'
       },
       '36656-64': {
         name: 'Valéria Silva de Barros Ribeiro',
@@ -187,7 +201,7 @@
         inst: 'Anhanguera',
         date: 'Conclusão em 15/08/2024',
         status: 'Ativo',
-        diploma: '36656-64' // Adicionado
+        diploma: '36656-64'
       }
     };
 
@@ -199,6 +213,19 @@
     const dateEl = document.getElementById('date');
     const dnumEl = document.getElementById('dnum');
     const statusEl = document.getElementById('status');
+    const feedbackEl = document.getElementById('feedback');
+
+    function clearDisplay() {
+      nameEl.textContent = '—';
+      degreeEl.textContent = '—';
+      instEl.textContent = '—';
+      dateEl.textContent = '—';
+      dnumEl.textContent = '—';
+      statusEl.textContent = '—';
+      statusEl.style.background = '#fff2e0';
+      statusEl.style.color = '#cc5200';
+      feedbackEl.textContent = '';
+    }
 
     function showNotFound(value) {
       nameEl.textContent = 'Nenhum registro encontrado' + (value ? ' para: ' + value : '');
@@ -209,6 +236,7 @@
       statusEl.textContent = 'Não encontrado';
       statusEl.style.background = '#ffe5e5';
       statusEl.style.color = '#b91c1c';
+      feedbackEl.textContent = '';
     }
 
     function showKnown(data) {
@@ -220,26 +248,14 @@
       statusEl.textContent = data.status;
       statusEl.style.background = '#fff2e0';
       statusEl.style.color = '#cc5200';
+      feedbackEl.textContent = '';
+    }
+
+    function validateDiplomaNumber(value) {
+      // Simples regex para formato números-hífen-números (ex: 18879-25)
+      const regex = /^d{4,6}-d{2}$/;
+      return regex.test(value);
     }
 
     btn.addEventListener('click', () => {
-      const v = (q.value || '').trim();
-      if (!v) {
-        alert('Informe o número do diploma para consulta.');
-        return;
-      }
-
-      btn.classList.add('loading');
-
-      setTimeout(() => {
-        btn.classList.remove('loading');
-        if (knownDiplomas[v]) {
-          showKnown(knownDiplomas[v]); // Passa o objeto diretamente
-        } else {
-          showNotFound(v);
-        }
-      }, 100); // Simula um pequeno delay para o "loading" ser visível
-    });
-  </script>
-</body>
-</html>
+      const v = (q.value
