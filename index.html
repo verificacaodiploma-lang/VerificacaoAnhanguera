@@ -258,4 +258,35 @@
     }
 
     btn.addEventListener('click', () => {
-      const v = (q.value
+      const v = (q.value || '').trim();
+      clearDisplay();
+
+      if (!v) {
+        feedbackEl.textContent = 'Informe o número do diploma para consulta.';
+        q.focus();
+        return;
+      }
+
+      if (!validateDiplomaNumber(v)) {
+        feedbackEl.textContent = 'Número do diploma inválido. Use o formato: 00000-00';
+        q.focus();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.classList.add('loading');
+      feedbackEl.textContent = '';
+
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+        if (knownDiplomas[v]) {
+          showKnown(knownDiplomas[v]);
+        } else {
+          showNotFound(v);
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html>
