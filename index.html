@@ -122,181 +122,13 @@
         padding: 20px;
       }
     }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Anhanguera</h1>
-    <p>Portal de Autenticidade Acadêmica</p>
-  </header>
 
-  <main>
-    <div class="search">
-      <input id="q" placeholder="Digite o número do diploma (ex: 18879-25)" aria-label="Número do diploma" />
-      <button id="btn">Consultar</button>
-    </div>
-
-    <div class="card" id="result">
-      <div class="muted">Resultado da verificação</div>
-      <h2 id="name">—</h2>
-      <div class="meta" id="degree">—</div>
-      <div class="meta" id="inst">—</div>
-      <div class="meta" id="date">—</div>
-      <div style="margin-top:14px;">
-        <span class="label" id="status">—</span>
-      </div>
-      <hr style="margin:18px 0;border:none;border-top:1px solid #f3f4f6" />
-      <div class="muted">Número do diploma</div>
-      <div id="dnum" style="font-weight:700;margin-top:6px">—</div>
-    </div>
-  </main>
-
-  <footer>
-    © 2025 Anhanguera — Todos os direitos reservados
-  </footer>
-
-  <script>
-    const known = {
-      diploma: '28555-65',
-      name: 'Ana Caroline De Camargo',
-      degree: 'Licenciatura em Pedagogia',
-      inst: 'Anhanguera',
-      date: 'Conclusão em 26/03/2025',
-      status: 'Ativo'
+    .loading {
+      cursor: wait;
     }
 
-    const q = document.getElementById('q')
-    const btn = document.getElementById('btn')
-    const nameEl = document.getElementById('name')
-    const degreeEl = document.getElementById('degree')
-    const instEl = document.getElementById('inst')
-    const dateEl = document.getElementById('date')
-    const dnumEl = document.getElementById('dnum')
-    const statusEl = document.getElementById('status')
-
-    function showNotFound(value) {
-      nameEl.textContent = 'Nenhum registro encontrado para: ' + (value || '')
-      degreeEl.textContent = ''
-      instEl.textContent = ''
-      dateEl.textContent = ''
-      dnumEl.textContent = '—'
-      statusEl.textContent = 'Não encontrado'
-      statusEl.style.background = '#ffe5e5'
-      statusEl.style.color = '#b91c1c'
-    }
-
-    function showKnown() {
-      nameEl.textContent = known.name
-      degreeEl.textContent = known.degree
-      instEl.textContent = known.inst
-      dateEl.textContent = known.date
-      dnumEl.textContent = known.diploma
-      statusEl.textContent = known.status
-      statusEl.style.background = '#fff2e0'
-      statusEl.style.color = '#cc5200'
-    }
-
-    btn.addEventListener('click', () => {
-      const v = (q.value || '').trim()
-      if (!v) {
-        alert('Informe o número do diploma para consulta.')
-        return
-      }
-      if (v === known.diploma) showKnown(); else showNotFound(v)
-    })
-
-    // REMOVA ESTA LINHA:
-    // showKnown()
-  </script>
-</body>
-</html>
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    header p {
-      margin: 6px 0 0;
-      font-size: 15px;
-      opacity: 0.9;
-    }
-
-    main {
-      width: 100%;
-      max-width: 600px;
-      background: var(--card);
-      margin-top: 40px;
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-    }
-
-    .search {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    input {
-      flex: 1;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: 1px solid #e5e7eb;
-      font-size: 15px;
-    }
-
-    button {
-      background: var(--laranja-escuro);
-      color: white;
-      border: none;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    button:hover {
-      background: #cc5200;
-    }
-
-    .card {
-      border: 1px solid #f3f4f6;
-      border-radius: 12px;
-      padding: 20px;
-      background: #fffaf5;
-    }
-
-    .label {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 8px;
-      background: #fff2e0;
-      color: var(--laranja-escuro);
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-
-    footer {
-      margin-top: 40px;
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-      padding-bottom: 20px;
-    }
-
-    @media (max-width: 600px) {
-      main {
-        margin: 20px;
-        padding: 20px;
-      }
+    .loading::after {
+      content: ' (Carregando...)';
     }
   </style>
 </head>
@@ -332,56 +164,72 @@
   </footer>
 
   <script>
-    const known = {
-      diploma: '28555-65',
-      name: 'Ana Caroline De Camargo',
-      degree: 'Licenciatura em Pedagogia',
-      inst: 'Anhanguera',
-      date: 'Conclusão em 26/03/2025',
-      status: 'Ativo'
-    }
+    const knownDiplomas = {
+      '28555-65': {
+        name: 'Ana Caroline De Camargo',
+        degree: 'Licenciatura em Pedagogia',
+        inst: 'Anhanguera',
+        date: 'Conclusão em 26/03/2025',
+        status: 'Ativo'
+      },
+      '12345-67': {
+        name: 'João Silva',
+        degree: 'Bacharel em Administração',
+        inst: 'Anhanguera',
+        date: 'Conclusão em 15/07/2024',
+        status: 'Ativo'
+      }
+    };
 
-    const q = document.getElementById('q')
-    const btn = document.getElementById('btn')
-    const nameEl = document.getElementById('name')
-    const degreeEl = document.getElementById('degree')
-    const instEl = document.getElementById('inst')
-    const dateEl = document.getElementById('date')
-    const dnumEl = document.getElementById('dnum')
-    const statusEl = document.getElementById('status')
+    const q = document.getElementById('q');
+    const btn = document.getElementById('btn');
+    const nameEl = document.getElementById('name');
+    const degreeEl = document.getElementById('degree');
+    const instEl = document.getElementById('inst');
+    const dateEl = document.getElementById('date');
+    const dnumEl = document.getElementById('dnum');
+    const statusEl = document.getElementById('status');
 
     function showNotFound(value) {
-      nameEl.textContent = 'Nenhum registro encontrado para: ' + (value || '')
-      degreeEl.textContent = ''
-      instEl.textContent = ''
-      dateEl.textContent = ''
-      dnumEl.textContent = '—'
-      statusEl.textContent = 'Não encontrado'
-      statusEl.style.background = '#ffe5e5'
-      statusEl.style.color = '#b91c1c'
+      nameEl.textContent = 'Nenhum registro encontrado' + (value ? ' para: ' + value : '');
+      degreeEl.textContent = '';
+      instEl.textContent = '';
+      dateEl.textContent = '';
+      dnumEl.textContent = '—';
+      statusEl.textContent = 'Não encontrado';
+      statusEl.style.background = '#ffe5e5';
+      statusEl.style.color = '#b91c1c';
     }
 
-    function showKnown() {
-      nameEl.textContent = known.name
-      degreeEl.textContent = known.degree
-      instEl.textContent = known.inst
-      dateEl.textContent = known.date
-      dnumEl.textContent = known.diploma
-      statusEl.textContent = known.status
-      statusEl.style.background = '#fff2e0'
-      statusEl.style.color = '#cc5200'
+    function showKnown(data) {
+      nameEl.textContent = data.name;
+      degreeEl.textContent = data.degree;
+      instEl.textContent = data.inst;
+      dateEl.textContent = data.date;
+      dnumEl.textContent = data.diploma;
+      statusEl.textContent = data.status;
+      statusEl.style.background = '#fff2e0';
+      statusEl.style.color = '#cc5200';
     }
 
     btn.addEventListener('click', () => {
-      const v = (q.value || '').trim()
+      const v = (q.value || '').trim();
       if (!v) {
-        alert('Informe o número do diploma para consulta.')
-        return
+        alert('Informe o número do diploma para consulta.');
+        return;
       }
-      if (v === known.diploma) showKnown(); else showNotFound(v)
-    })
 
-    showKnown()
+      btn.classList.add('loading');
+
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        if (knownDiplomas[v]) {
+          showKnown({...knownDiplomas[v], diploma: v});
+        } else {
+          showNotFound(v);
+        }
+      }, 100); // Simula um pequeno delay para o "loading" ser visível
+    });
   </script>
 </body>
 </html>
