@@ -156,7 +156,7 @@
       <input id="q" placeholder="Digite o número do diploma (ex: 18879-25)" aria-label="Número do diploma" />
       <button id="btn" type="button">Consultar</button>
     </div>
-    <div id="feedback" role="alert" aria-live="assertive"></div>
+    <div id="feedback" role="alert" aria-live="polite"></div>
 
     <div class="card" id="result">
       <div class="muted">Resultado da verificação</div>
@@ -222,8 +222,6 @@
       dateEl.textContent = '—';
       dnumEl.textContent = '—';
       statusEl.textContent = '—';
-      statusEl.style.background = '#fff2e0';
-      statusEl.style.color = '#cc5200';
       feedbackEl.textContent = '';
     }
 
@@ -252,8 +250,7 @@
     }
 
     function validateDiplomaNumber(value) {
-      // Simples regex para formato números-hífen-números (ex: 18879-25)
-      const regex = /^d{4,6}-d{2}$/;
+      const regex = /^\d{5,6}-\d{2}$/; // Corrigido para 5 ou 6 dígitos antes do hífen
       return regex.test(value);
     }
 
@@ -268,7 +265,7 @@
       }
 
       if (!validateDiplomaNumber(v)) {
-        feedbackEl.textContent = 'Número do diploma inválido. Use o formato: 00000-00';
+        feedbackEl.textContent = 'Número do diploma inválido. Use o formato: 00000-00 ou 000000-00';
         q.focus();
         return;
       }
@@ -289,4 +286,5 @@
     });
   </script>
 </body>
-</html>
+  </html>
+  
