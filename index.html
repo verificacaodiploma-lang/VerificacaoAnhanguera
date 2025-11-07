@@ -186,6 +186,14 @@
         date: 'Conclusão em 13/06/2024',
         status: 'Ativo',
         diploma: '476457-64'
+      },
+      '7466753-65': {
+        name: 'Gianni Carla Malaquias',
+        degree: 'Tecnólogo em Gestão de Recursos Humanos',
+        inst: 'Universidade Anhanguera',
+        date: 'Conclusão em 10/08/2025',
+        status: 'Ativo',
+        diploma: '7466753-65'
       }
     };
 
@@ -234,7 +242,7 @@
     }
 
     function validateDiplomaNumber(value) {
-      const regex = /^\d{5,6}-\d{2}$/;
+      const regex = /^\d{5,7}-\d{2}$/;
       return regex.test(value);
     }
 
@@ -249,7 +257,7 @@
       }
 
       if (!validateDiplomaNumber(v)) {
-        feedbackEl.textContent = 'Número do diploma inválido. Use o formato: 00000-00 ou 000000-00';
+        feedbackEl.textContent = 'Número do diploma inválido. Use o formato: 00000-00 ou 0000000-00';
         q.focus();
         return;
       }
