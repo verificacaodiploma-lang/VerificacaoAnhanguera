@@ -53,7 +53,7 @@
       margin-top: 40px;
       border-radius: 16px;
       padding: 28px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
     }
 
     .search {
@@ -156,6 +156,7 @@
       <input id="q" placeholder="Digite o número do diploma (ex: 18879-25)" aria-label="Número do diploma" />
       <button id="btn" type="button">Consultar</button>
     </div>
+
     <div id="feedback" role="alert" aria-live="polite"></div>
 
     <div class="card" id="result">
@@ -173,9 +174,7 @@
     </div>
   </main>
 
-  <footer>
-    © 2025 Anhanguera — Todos os direitos reservados
-  </footer>
+  <footer>© 2025 Anhanguera — Todos os direitos reservados</footer>
 
   <script>
     const knownDiplomas = {
@@ -187,6 +186,7 @@
         status: 'Ativo',
         diploma: '476457-64'
       },
+
       '7466753-65': {
         name: 'Gianni Carla Malaquias',
         degree: 'Tecnólogo em Gestão de Recursos Humanos',
@@ -195,6 +195,7 @@
         status: 'Ativo',
         diploma: '7466753-65'
       },
+
       '746778-75': {
         name: 'André Cordeiro Moravec',
         degree: 'Bacharel em Administração',
@@ -204,7 +205,6 @@
         diploma: '746778-75'
       },
 
-      /* NOVO DIPLOMA ADICIONADO */
       '57557-86': {
         name: 'Vanderlucia Lacerda dos Santos',
         degree: 'Pós-Graduação em Enfermagem Estética',
@@ -214,7 +214,6 @@
         diploma: '57557-86'
       },
 
-      /* NOVO DIPLOMA — Tatiana */
       '47666-87': {
         name: 'Tatiana Aparecida Raimundo',
         degree: 'Licenciatura em Educação Especial',
@@ -222,6 +221,16 @@
         date: 'Conclusão em 10/08/2024',
         status: 'Ativo',
         diploma: '47666-87'
+      },
+
+      /* NOVO — JOANITA */
+      '57646-75': {
+        name: 'Joanita Aparecida Martins Machado da Veiga',
+        degree: 'Pós-Graduação em Saúde Mental e Atenção Psicossocial',
+        inst: 'Faculdade Anhanguera de Caxias do Sul-RS',
+        date: 'Conclusão em 14/09/2025',
+        status: 'Ativo',
+        diploma: '57646-75'
       }
     };
 
@@ -306,4 +315,4 @@
     });
   </script>
 </body>
-</html>
+  </html>
