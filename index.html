@@ -1,223 +1,5 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Anhanguera — Portal de Autenticidade Acadêmica</title>
-
-  <style>
-    :root {
-      --laranja-escuro: #e65c00;
-      --laranja-claro: #ffb84d;
-      --bg: #fff8f2;
-      --texto: #1f2937;
-      --muted: #6b7280;
-      --card: #ffffff;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto;
-      background: var(--bg);
-      color: var(--texto);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    header {
-      width: 100%;
-      background: linear-gradient(90deg, var(--laranja-escuro), var(--laranja-claro));
-      color: #fff;
-      text-align: center;
-      padding: 32px 16px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    header p {
-      margin: 6px 0 0;
-      font-size: 15px;
-      opacity: 0.9;
-    }
-
-    main {
-      width: 100%;
-      max-width: 600px;
-      background: var(--card);
-      margin-top: 40px;
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-    }
-
-    .search {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    input {
-      flex: 1;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: 1px solid #e5e7eb;
-      font-size: 15px;
-    }
-
-    button {
-      background: var(--laranja-escuro);
-      color: white;
-      border: none;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .card {
-      border: 1px solid #f3f4f6;
-      border-radius: 12px;
-      padding: 20px;
-      background: #fffaf5;
-    }
-
-    .label {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 8px;
-      background: #fff2e0;
-      color: var(--laranja-escuro);
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-
-    #feedback {
-      color: #b91c1c;
-      font-size: 14px;
-      margin-bottom: 12px;
-      min-height: 1.2em;
-    }
-
-    footer {
-      margin-top: 40px;
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-      padding-bottom: 20px;
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <h1>Anhanguera</h1>
-  <p>Portal de Autenticidade Acadêmica</p>
-</header>
-
-<main>
-  <div class="search">
-    <input id="q" placeholder="Digite o número do diploma (ex: 364446-86)" />
-    <button id="btn">Consultar</button>
-  </div>
-
-  <div id="feedback"></div>
-
-  <div class="card">
-    <div class="muted">Resultado da verificação</div>
-    <h2 id="name">—</h2>
-    <div id="degree">—</div>
-    <div id="inst">—</div>
-    <div id="date">—</div>
-
-    <div style="margin-top:14px;">
-      <span class="label" id="status">—</span>
-    </div>
-
-    <hr style="margin:18px 0;border:none;border-top:1px solid #f3f4f6" />
-
-    <div class="muted">Número do diploma</div>
-    <div id="dnum" style="font-weight:700;margin-top:6px">—</div>
-  </div>
-</main>
-
-<footer>© 2025 Anhanguera — Todos os direitos reservados</footer>
-
 <script>
   const knownDiplomas = {
-
-    '476457-64': {
-      name: 'Diego Roberto Alves',
-      degree: 'Pós-Graduação em Psicopedagogia',
-      inst: 'Centro Universitário Anhanguera de Belém do Pará',
-      date: 'Conclusão em 13/06/2024',
-      status: 'Ativo',
-      diploma: '476457-64'
-    },
-
-    '7466753-65': {
-      name: 'Gianni Carla Malaquias',
-      degree: 'Tecnólogo em Gestão de Recursos Humanos',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 10/08/2025',
-      status: 'Ativo',
-      diploma: '7466753-65'
-    },
-
-    '57557-86': {
-      name: 'Vanderlucia Lacerda dos Santos',
-      degree: 'Pós-Graduação em Enfermagem Estética',
-      inst: 'Anhanguera Educacional Ltda',
-      date: 'Conclusão em 10/08/2024',
-      status: 'Ativo',
-      diploma: '57557-86'
-    },
-
-    '47666-87': {
-      name: 'Tatiana Aparecida Raimundo',
-      degree: 'Licenciatura em Educação Especial',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 10/08/2024',
-      status: 'Ativo',
-      diploma: '47666-87'
-    },
-
-    '57646-75': {
-      name: 'Joanita Aparecida Martins Machado da Veiga',
-      degree: 'Pós-Graduação em Saúde Mental e Atenção Psicossocial',
-      inst: 'Faculdade Anhanguera de Caxias do Sul-RS',
-      date: 'Conclusão em 14/09/2025',
-      status: 'Ativo',
-      diploma: '57646-75'
-    },
-
-    '47555-86': {
-      name: 'Nilza Rosa de Souza do Rosario',
-      degree: 'Pós-Graduação em Educação Especial',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 14/06/2025',
-      status: 'Ativo',
-      diploma: '47555-86'
-    },
-
-    /* NOVO — ELIANE */
     '364446-86': {
       name: 'Eliane da Silva',
       degree: 'Pós-Graduação em Enfermagem Gerontologia',
@@ -226,39 +8,44 @@
       status: 'Ativo',
       diploma: '364446-86'
     }
-
   };
 
   const q = document.getElementById('q');
   const btn = document.getElementById('btn');
 
+  const nameEl = document.getElementById('name');
+  const degreeEl = document.getElementById('degree');
+  const instEl = document.getElementById('inst');
+  const dateEl = document.getElementById('date');
+  const statusEl = document.getElementById('status');
+  const dnumEl = document.getElementById('dnum');
+  const feedbackEl = document.getElementById('feedback');
+
   btn.onclick = () => {
     const v = q.value.trim();
+    feedbackEl.textContent = '';
 
     if (!v) {
-      document.getElementById('feedback').textContent = 'Informe o número do diploma.';
+      feedbackEl.textContent = 'Informe o número do diploma.';
       return;
     }
 
     const d = knownDiplomas[v];
 
     if (d) {
-      name.textContent = d.name;
-      degree.textContent = d.degree;
-      inst.textContent = d.inst;
-      date.textContent = d.date;
-      status.textContent = d.status;
-      dnum.textContent = d.diploma;
+      nameEl.textContent = d.name;
+      degreeEl.textContent = d.degree;
+      instEl.textContent = d.inst;
+      dateEl.textContent = d.date;
+      statusEl.textContent = d.status;
+      dnumEl.textContent = d.diploma;
     } else {
-      name.textContent = 'Nenhum registro encontrado';
-      degree.textContent = '';
-      inst.textContent = '';
-      date.textContent = '';
-      status.textContent = 'Não encontrado';
-      dnum.textContent = '—';
+      nameEl.textContent = 'Nenhum registro encontrado';
+      degreeEl.textContent = '';
+      instEl.textContent = '';
+      dateEl.textContent = '';
+      statusEl.textContent = 'Não encontrado';
+      dnumEl.textContent = '—';
     }
   };
 </script>
-
-</body>
-</html>
