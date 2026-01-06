@@ -34,17 +34,8 @@
       padding: 32px 16px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    header p {
-      margin: 6px 0 0;
-      font-size: 15px;
-      opacity: 0.9;
-    }
+    header h1 { margin: 0; font-size: 24px; font-weight: 700; }
+    header p { margin: 6px 0 0; font-size: 15px; opacity: 0.9; }
 
     main {
       width: 100%;
@@ -56,11 +47,7 @@
       box-shadow: 0 6px 20px rgba(0,0,0,.06);
     }
 
-    .search {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+    .search { display: flex; gap: 10px; margin-bottom: 20px; }
 
     input {
       flex: 1;
@@ -80,11 +67,6 @@
       cursor: pointer;
     }
 
-    button:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-    }
-
     .card {
       border: 1px solid #f3f4f6;
       border-radius: 12px;
@@ -92,11 +74,7 @@
       background: #fffaf5;
     }
 
-    .muted {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
+    .muted { color: var(--muted); font-size: 14px; margin-bottom: 4px; }
 
     .label {
       display: inline-block;
@@ -108,12 +86,7 @@
       font-size: 14px;
     }
 
-    #feedback {
-      color: #b91c1c;
-      font-size: 14px;
-      margin-bottom: 12px;
-      min-height: 1.2em;
-    }
+    #feedback { color: #b91c1c; font-size: 14px; margin-bottom: 12px; }
 
     footer {
       margin-top: 40px;
@@ -161,140 +134,148 @@
 </footer>
 
 <script>
-  const knownDiplomas = {
-    '476457-64': {
-      name: 'Diego Roberto Alves',
-      degree: 'Pós-Graduação em Psicopedagogia',
-      inst: 'Centro Universitário Anhanguera de Belém do Pará',
-      date: 'Conclusão em 13/06/2024',
-      status: 'Ativo',
-      diploma: '476457-64'
-    },
-    '7466753-65': {
-      name: 'Gianni Carla Malaquias',
-      degree: 'Tecnólogo em Gestão de Recursos Humanos',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 10/08/2025',
-      status: 'Ativo',
-      diploma: '7466753-65'
-    },
-    '57557-86': {
-      name: 'Vanderlucia Lacerda dos Santos',
-      degree: 'Pós-Graduação em Enfermagem Estética',
-      inst: 'Anhanguera Educacional Ltda',
-      date: 'Conclusão em 10/08/2024',
-      status: 'Ativo',
-      diploma: '57557-86'
-    },
-    '47666-87': {
-      name: 'Tatiana Aparecida Raimundo',
-      degree: 'Licenciatura em Educação Especial',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 10/08/2024',
-      status: 'Ativo',
-      diploma: '47666-87'
-    },
-    '576567-77': {
-      name: 'Fátima Cordovil Figueiredo',
-      degree: 'Pós-Graduação em Análise do Comportamento Aplicada',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 15/08/2023',
-      status: 'Ativo',
-      diploma: '576567-77'
-    },
-    '464467-86': {
-      name: 'Suelen Anunciação da Mota Santos',
-      degree: 'Pós-Graduação em Urgência e Emergência',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 23/06/2022',
-      status: 'Ativo',
-      diploma: '464467-86'
-    },
-    '465567-87': {
-      name: 'Miriam Kelly Cavalcante Saldanha',
-      degree: 'Pós-Graduação em Análise do Comportamento Aplicada',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 14/06/2025',
-      status: 'Ativo',
-      diploma: '465567-87'
-    },
-    '2454446671-22': {
-      name: 'Luciana Tchir Lemes Cristofani',
-      degree: 'Pós-Graduação em Psicanálise',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 23/06/2021',
-      status: 'Ativo',
-      diploma: '2454446671-22'
-    },
+const knownDiplomas = {
+  '476457-64': {
+    name: 'Diego Roberto Alves',
+    degree: 'Pós-Graduação em Psicopedagogia',
+    inst: 'Centro Universitário Anhanguera de Belém do Pará',
+    date: 'Conclusão em 13/06/2024',
+    status: 'Ativo',
+    diploma: '476457-64'
+  },
+  '7466753-65': {
+    name: 'Gianni Carla Malaquias',
+    degree: 'Tecnólogo em Gestão de Recursos Humanos',
+    inst: 'Universidade Anhanguera',
+    date: 'Conclusão em 10/08/2025',
+    status: 'Ativo',
+    diploma: '7466753-65'
+  },
+  '57557-86': {
+    name: 'Vanderlucia Lacerda dos Santos',
+    degree: 'Pós-Graduação em Enfermagem Estética',
+    inst: 'Anhanguera Educacional Ltda',
+    date: 'Conclusão em 10/08/2024',
+    status: 'Ativo',
+    diploma: '57557-86'
+  },
+  '47666-87': {
+    name: 'Tatiana Aparecida Raimundo',
+    degree: 'Licenciatura em Educação Especial',
+    inst: 'Universidade Anhanguera',
+    date: 'Conclusão em 10/08/2024',
+    status: 'Ativo',
+    diploma: '47666-87'
+  },
+  '576567-77': {
+    name: 'Fátima Cordovil Figueiredo',
+    degree: 'Pós-Graduação em Análise do Comportamento Aplicada',
+    inst: 'Universidade Anhanguera',
+    date: 'Conclusão em 15/08/2023',
+    status: 'Ativo',
+    diploma: '576567-77'
+  },
+  '464467-86': {
+    name: 'Suelen Anunciação da Mota Santos',
+    degree: 'Pós-Graduação em Urgência e Emergência',
+    inst: 'Universidade Anhanguera',
+    date: 'Conclusão em 23/06/2022',
+    status: 'Ativo',
+    diploma: '464467-86'
+  },
+  '465567-87': {
+    name: 'Miriam Kelly Cavalcante Saldanha',
+    degree: 'Pós-Graduação em Análise do Comportamento Aplicada',
+    inst: 'Universidade Anhanguera',
+    date: 'Conclusão em 14/06/2025',
+    status: 'Ativo',
+    diploma: '465567-87'
+  },
+  '2454446671-22': {
+    name: 'Luciana Tchir Lemes Cristofani',
+    degree: 'Pós-Graduação em Psicanálise',
+    inst: 'Universidade Anhanguera',
+    date: 'Conclusão em 23/06/2021',
+    status: 'Ativo',
+    diploma: '2454446671-22'
+  },
 
-    /* ===== NOVOS REGISTROS ===== */
+  /* ===== REGISTROS ATUALIZADOS ===== */
 
-    '1350634-22': {
-      name: 'Adriano Almeida Laranjeira',
-      degree: 'Licenciatura em Pedagogia',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 13/08/2024',
-      status: 'Ativo',
-      diploma: '1350634-22'
-    },
+  '1350634-22': {
+    name: 'Adriano Almeida Laranjeira',
+    degree: 'Licenciatura em Pedagogia',
+    inst: 'Universidade Anhanguera',
+    date: 'Conclusão em 05/01/2026',   // 🔄 data corrigida
+    status: 'Ativo',
+    diploma: '1350634-22'
+  },
 
-    '865895-23': {
-      name: 'Valmisson Silva Santos',
-      degree: 'Licenciatura em Educação Física',
-      inst: 'Universidade Anhanguera',
-      date: 'Conclusão em 25/08/2024',
-      status: 'Ativo',
-      diploma: '865895-23'
-    }
-  };
+  '865895-23': {
+    name: 'Valmisson Silva Santos',
+    degree: 'Licenciatura em Educação Física',
+    inst: 'Universidade Anhanguera',
+    date: 'Conclusão em 25/08/2024',
+    status: 'Ativo',
+    diploma: '865895-23'
+  },
 
-  const q = document.getElementById('q');
-  const btn = document.getElementById('btn');
+  '363456-98': {   // 🆕 NOVO REGISTRO
+    name: 'José Carlos de Araújo',
+    degree: 'Licenciatura em Administração',
+    inst: 'Universidade Anhanguera',
+    date: 'Conclusão em 14/08/2025',
+    status: 'Ativo',
+    diploma: '363456-98'
+  }
+};
 
-  const nameEl = document.getElementById('name');
-  const degreeEl = document.getElementById('degree');
-  const instEl = document.getElementById('inst');
-  const dateEl = document.getElementById('date');
-  const dnumEl = document.getElementById('dnum');
-  const statusEl = document.getElementById('status');
-  const feedbackEl = document.getElementById('feedback');
+const q = document.getElementById('q');
+const btn = document.getElementById('btn');
+const nameEl = document.getElementById('name');
+const degreeEl = document.getElementById('degree');
+const instEl = document.getElementById('inst');
+const dateEl = document.getElementById('date');
+const dnumEl = document.getElementById('dnum');
+const statusEl = document.getElementById('status');
+const feedbackEl = document.getElementById('feedback');
 
-  function clearAll() {
-    nameEl.textContent = '—';
-    degreeEl.textContent = '—';
-    instEl.textContent = '—';
-    dateEl.textContent = '—';
-    dnumEl.textContent = '—';
-    statusEl.textContent = '—';
-    statusEl.style.background = '#fff2e0';
-    statusEl.style.color = '#e65c00';
-    feedbackEl.textContent = '';
+function clearAll() {
+  nameEl.textContent = '—';
+  degreeEl.textContent = '—';
+  instEl.textContent = '—';
+  dateEl.textContent = '—';
+  dnumEl.textContent = '—';
+  statusEl.textContent = '—';
+  statusEl.style.background = '#fff2e0';
+  statusEl.style.color = '#e65c00';
+  feedbackEl.textContent = '';
+}
+
+btn.onclick = () => {
+  const value = q.value.trim();
+  clearAll();
+
+  if (!/^\d{5,10}-\d{2}$/.test(value)) {
+    feedbackEl.textContent = 'Número de diploma inválido.';
+    return;
   }
 
-  btn.onclick = () => {
-    const value = q.value.trim();
-    clearAll();
-
-    if (!/^\d{5,10}-\d{2}$/.test(value)) {
-      feedbackEl.textContent = 'Número de diploma inválido.';
-      return;
-    }
-
-    if (knownDiplomas[value]) {
-      const d = knownDiplomas[value];
-      nameEl.textContent = d.name;
-      degreeEl.textContent = d.degree;
-      instEl.textContent = d.inst;
-      dateEl.textContent = d.date;
-      dnumEl.textContent = d.diploma;
-      statusEl.textContent = d.status;
-    } else {
-      nameEl.textContent = 'Nenhum registro encontrado';
-      statusEl.textContent = 'Não encontrado';
-      statusEl.style.background = '#ffe5e5';
-      statusEl.style.color = '#b91c1c';
-    }
-  };
+  if (knownDiplomas[value]) {
+    const d = knownDiplomas[value];
+    nameEl.textContent = d.name;
+    degreeEl.textContent = d.degree;
+    instEl.textContent = d.inst;
+    dateEl.textContent = d.date;
+    dnumEl.textContent = d.diploma;
+    statusEl.textContent = d.status;
+  } else {
+    nameEl.textContent = 'Nenhum registro encontrado';
+    statusEl.textContent = 'Não encontrado';
+    statusEl.style.background = '#ffe5e5';
+    statusEl.style.color = '#b91c1c';
+  }
+};
 </script>
 </body>
 </html>
