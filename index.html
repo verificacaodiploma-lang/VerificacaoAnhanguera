@@ -34,8 +34,17 @@
       padding: 32px 16px;
     }
 
-    header h1 { margin: 0; font-size: 24px; font-weight: 700; }
-    header p { margin: 6px 0 0; font-size: 15px; opacity: 0.9; }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    header p {
+      margin: 6px 0 0;
+      font-size: 15px;
+      opacity: 0.9;
+    }
 
     main {
       width: 100%;
@@ -47,7 +56,11 @@
       box-shadow: 0 6px 20px rgba(0,0,0,.06);
     }
 
-    .search { display: flex; gap: 10px; margin-bottom: 20px; }
+    .search {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
 
     input {
       flex: 1;
@@ -74,7 +87,11 @@
       background: #fffaf5;
     }
 
-    .muted { color: var(--muted); font-size: 14px; margin-bottom: 4px; }
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
 
     .label {
       display: inline-block;
@@ -86,7 +103,11 @@
       font-size: 14px;
     }
 
-    #feedback { color: #b91c1c; font-size: 14px; margin-bottom: 12px; }
+    #feedback {
+      color: #b91c1c;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
 
     footer {
       margin-top: 40px;
@@ -99,6 +120,7 @@
 </head>
 
 <body>
+
 <header>
   <h1>Anhanguera</h1>
   <p>Portal de Autenticidade Acadêmica</p>
@@ -106,7 +128,7 @@
 
 <main>
   <div class="search">
-    <input id="q" placeholder="Digite o número do diploma (ex: 47666-87)" />
+    <input id="q" placeholder="Digite o número do diploma (ex: 24578-23)" />
     <button id="btn">Consultar</button>
   </div>
 
@@ -168,94 +190,13 @@ const knownDiplomas = {
     status: 'Ativo',
     diploma: '47666-87'
   },
-  '576567-77': {
-    name: 'Fátima Cordovil Figueiredo',
-    degree: 'Pós-Graduação em Análise do Comportamento Aplicada',
+  '24578-23': {
+    name: 'Nilceia Felix da Silva',
+    degree: 'Pós-Graduação em Recursos Humanos',
     inst: 'Universidade Anhanguera',
-    date: 'Conclusão em 15/08/2023',
+    date: 'Conclusão em 13/12/2025',
     status: 'Ativo',
-    diploma: '576567-77'
-  },
-  '464467-86': {
-    name: 'Suelen Anunciação da Mota Santos',
-    degree: 'Pós-Graduação em Urgência e Emergência',
-    inst: 'Universidade Anhanguera',
-    date: 'Conclusão em 23/06/2022',
-    status: 'Ativo',
-    diploma: '464467-86'
-  },
-  '465567-87': {
-    name: 'Miriam Kelly Cavalcante Saldanha',
-    degree: 'Pós-Graduação em Análise do Comportamento Aplicada',
-    inst: 'Universidade Anhanguera',
-    date: 'Conclusão em 14/06/2025',
-    status: 'Ativo',
-    diploma: '465567-87'
-  },
-  '2454446671-22': {
-    name: 'Luciana Tchir Lemes Cristofani',
-    degree: 'Pós-Graduação em Psicanálise',
-    inst: 'Universidade Anhanguera',
-    date: 'Conclusão em 23/06/2021',
-    status: 'Ativo',
-    diploma: '2454446671-22'
-  },
-  '1350634-22': {
-    name: 'Adriano Almeida Laranjeira',
-    degree: 'Licenciatura em Pedagogia',
-    inst: 'Universidade Anhanguera',
-    date: 'Conclusão em 05/01/2026',
-    status: 'Ativo',
-    diploma: '1350634-22'
-  },
-  '865895-23': {
-    name: 'Valmisson Silva Santos',
-    degree: 'Licenciatura em Educação Física',
-    inst: 'Universidade Anhanguera',
-    date: 'Conclusão em 25/08/2024',
-    status: 'Ativo',
-    diploma: '865895-23'
-  },
-  '363456-98': {
-    name: 'José Carlos de Araújo',
-    degree: 'Bacharel em Administração',
-    inst: 'Universidade Anhanguera',
-    date: 'Conclusão em 14/08/2025',
-    status: 'Ativo',
-    diploma: '363456-98'
-  },
-  '343386-23': {
-    name: 'Ana Caroline De Camargo',
-    degree: 'Licenciatura em Pedagogia',
-    inst: 'Universidade Pitágoras Unopar Anhanguera',
-    date: 'Conclusão em 26/03/2025',
-    status: 'Ativo',
-    diploma: '343386-23'
-  },
-  '366456-87': {
-    name: 'Jonathan Zamberlan',
-    degree: 'Bacharel em Medicina Veterinária',
-    inst: 'Faculdade Anhanguera de Macapá',
-    date: 'Conclusão em 10/01/2025',
-    status: 'Ativo',
-    diploma: '366456-87'
-  },
-  '2653356-98': {
-    name: 'Stela Maris Alves de Lima Ribeiro',
-    degree: 'Pós-Graduação em Gestão Educacional',
-    inst: 'Universidade Anhanguera',
-    date: 'Conclusão em 04/06/2022',
-    status: 'Ativo',
-    diploma: '2653356-98'
-  },
-  /* ✅ NOVO REGISTRO */
-  '2567386-78': {
-    name: 'Maylane Amorim Costa',
-    degree: 'Pós-Graduação em Gestão Educacional',
-    inst: 'Universidade Anhanguera',
-    date: 'Conclusão em 14/12/2021',
-    status: 'Ativo',
-    diploma: '2567386-78'
+    diploma: '24578-23'
   }
 };
 
@@ -306,5 +247,6 @@ btn.onclick = () => {
   }
 };
 </script>
+
 </body>
 </html>
